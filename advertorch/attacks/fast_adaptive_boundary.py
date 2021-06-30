@@ -11,13 +11,18 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import torch
-from torch.autograd.gradcheck import zero_gradients
 import time
 
 try:
     from torch import flip
 except ImportError:
     from advertorch.utils import torch_flip as flip
+
+try:
+    from torch.autograd.gradcheck import zero_gradients
+except ImportError:
+    from advertorch.utils import torch_zero_gradients as zero_gradients
+
 
 from advertorch.utils import replicate_input
 
